@@ -1,3 +1,4 @@
+# Latex
 *.upa
 *.upb
 *.pdf
@@ -5,7 +6,15 @@
 *.jpg
 *.gif
 *.log
+*.aux
+*.log
+*.out
+*.synctex.gz
+*.toc
+*.lof
 
+
+# Java
 *.class
 
 # Package Files #
