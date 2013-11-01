@@ -1,3 +1,11 @@
+*.upa
+*.upb
+*.pdf
+*.png
+*.jpg
+*.gif
+*.log
+
 *.class
 
 # Package Files #
