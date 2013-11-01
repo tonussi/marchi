@@ -1,7 +1,8 @@
 INE5415
 =======
 
-Trabalho 1 Simulando Máquinas
+__Trabalho 1__: Simulando Máquinas
+
 __Nome__: Lucas Tonussi
 
 Ferramenta
