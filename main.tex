@@ -19,7 +19,7 @@
 
 \input{color}
 
-\hypersetup{colorlinks,citecolor=MidnightBlue, filecolor=DarkSlateBlue, linkcolor=LightSlateBlue, urlcolor=SkyBlue}
+\hypersetup{colorlinks,citecolor=darkslategray, filecolor=darkslateblue, linkcolor=darkslategray, urlcolor=darkslateblue}
 
 \lstset{language=Java, basicstyle=\ttfamily, keywordstyle=\color{javapurple}\bfseries, stringstyle=\color{javared}, commentstyle=\color{javagreen}, morecomment=[s][\color{javadocblue}]{/**}{*/}, numbers=left, numberstyle=\tiny\color{black}, stepnumber=1, numbersep=10pt, tabsize=2, showspaces=false, showstringspaces=false}
 
@@ -105,22 +105,81 @@
 
 \section{Máquinas}
 
-$$ L(M)= \lbrace w \vert w \in \Sigma =  {\lbrace a,b,c \rbrace}^* \text{ e $w$ possui número par de $b$'s e o número de $a$'s + $c$'s é ímpar } \rbrace$$
+\qquad A seguir ser\~{a}o apresentadas as m\'{a}quinas para esse trabalho. Cada sess\~{a}o cont\'{e}m o nome do tipo de m\'{a}quina para que fique melhor organizado. Dentro de cada sess\~{a}o estão resumidamente contidas as informaç\~{o}es e simulaç\~{o}es sobre as m\'{a}quinas. Cada m\'{a}quina aborda uma linguagem de entrada diferente. As simulaç\~{o}es foram feitas usando jFlap \footnote{\href{http://www.cs.duke.edu/csed/jflap/}{jFlap}}.
+
+
+\subsection{Automato Finito}
+
+$$ L(M)= \lbrace w \vert w \in \Sigma =  {\lbrace a,b,c \rbrace}^* \text{ e $w$ possui número par de $b$'s e número de $a$'s $+$ $c$'s é ímpar } \rbrace$$
+
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.7\textwidth]{automato-finito}
+\caption{Automato Finito - Que aceita a linguagem regular definida acima.}
+\end{figure}
+
+\qquad Definição Formal
+A coleção de linguagens regulares sobre um alfabeto $\Sigma$ é definida recursivamente seguindo as regras abaixo:
+
+\begin{itemize}
+\item ($\emptyset$) é uma linguagem regular.
+\item $\lbrace \epsilon \rbrace$ é uma linguagem regular.
+\item Se $ a \in \Sigma$, então linguagem do conjunto unitário a é uma linguagem regular.
+\item Se $A \wedge B$ são linguagens regulares, então $A \cup B$, $A \bullet B$, e ${A}^*$ são linguagens regulares.
+\item Nenhuma outra linguagem sobre $\Sigma$ é regular. $\blacksquare$
+\end{itemize}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.7\textwidth]{chomsky}
+\caption{Hierarquia de Chomsky, para mostrar onde estão localizadas as linguagens (ou gramáticas) regulares.}
+\end{figure}
+
+
+\qquad Uma tabela com alguns testes para esse automato finito. Como você pode ver esse automato só aceita número par de b's \textbf{e} número ímpar da soma de a's com c's.
+
+\begin{tabular}{|c|c|c|c|}
+\hline
+$\emptyset$ & Rejected \\ 
+\hline 
+bbb & Rejected \\ 
+\hline 
+bb & Rejected \\ 
+\hline 
+bbbb & Rejected \\ 
+\hline 
+bbbbb & Rejected \\ 
+\hline 
+aaaccc & Rejected \\ 
+\hline 
+aacc & Rejected \\ 
+\hline 
+ccaaaa & Rejected \\ 
+\hline 
+bbaacc & Rejected \\ 
+\hline 
+bbaaaaccc & Accepted \\ 
+\hline 
+bbaaaaaccc & Rejected \\ 
+\hline 
+ccaaaa & Accepted \\ 
+\hline
+\end{tabular}
+
+\subsection{Automato de Pilha}
 
 $$ L(M)= \lbrace w \vert w \in \Sigma =  {\lbrace a,b,c \rbrace}^* \text{ e } w = {{a}^m}{{b}^n}{{c}^k} \text{ para } m \leqslant n  \leqslant 2m \text{ e } k \geqslant 0 \rbrace $$
 
+
+\subsection{Maquina de Turing Fita nica}
+
 $$ L(M)= \lbrace w \# w \vert w \in  {\lbrace 0,1 \rbrace}^* \rbrace $$
 
+
+\subsection{Máquina de Turing Multiplas Fitas}
+
 $$ L(M)= \lbrace ww \vert w \in  {\lbrace 0,1 \rbrace}^* \rbrace \textbf{ (MT-n) } $$
-
-
-% \begin{figure}[ht]
-% \centering
-% \includegraphics[width=0.7\textwidth]{logica}
-% \caption{Logica}
-% \end{figure}
-
-
 
 
 \end{document}
