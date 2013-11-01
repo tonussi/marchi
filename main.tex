@@ -107,7 +107,7 @@
 
 \qquad A seguir ser\~{a}o apresentadas as m\'{a}quinas para esse trabalho. Cada sess\~{a}o cont\'{e}m o nome do tipo de m\'{a}quina para que fique melhor organizado. Dentro de cada sess\~{a}o estão resumidamente contidas as informaç\~{o}es e simulaç\~{o}es sobre as m\'{a}quinas. Cada m\'{a}quina aborda uma linguagem de entrada diferente. As simulaç\~{o}es foram feitas usando jFlap \footnote{\href{http://www.cs.duke.edu/csed/jflap/}{jFlap}}.
 
-
+\pagebreak
 \subsection{Automato Finito}
 
 $$ L(M)= \lbrace w \vert w \in \Sigma =  {\lbrace a,b,c \rbrace}^* \text{ e $w$ possui número par de $b$'s e número de $a$'s $+$ $c$'s é ímpar } \rbrace$$
@@ -167,16 +167,23 @@ ccaaaa & Accepted \\
 \hline
 \end{tabular}
 
+\pagebreak
 \subsection{Automato de Pilha}
 
 $$ L(M)= \lbrace w \vert w \in \Sigma =  {\lbrace a,b,c \rbrace}^* \text{ e } w = {{a}^m}{{b}^n}{{c}^k} \text{ para } m \leqslant n  \leqslant 2m \text{ e } k \geqslant 0 \rbrace $$
 
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.7\textwidth]{automato-pilha}
+\caption{Automato com Pilha - Que aceita a linguagem livre de contexto definida acima.}
+\end{figure}
 
+\pagebreak
 \subsection{Maquina de Turing Fita nica}
 
 $$ L(M)= \lbrace w \# w \vert w \in  {\lbrace 0,1 \rbrace}^* \rbrace $$
 
-
+\pagebreak
 \subsection{Máquina de Turing Multiplas Fitas}
 
 $$ L(M)= \lbrace ww \vert w \in  {\lbrace 0,1 \rbrace}^* \rbrace \textbf{ (MT-n) } $$
