@@ -11,6 +11,8 @@
 
 \usepackage{amsmath, amsfonts, amssymb, graphicx, enumerate, verbatim, hyperref, color, lipsum, ifxetex, ifluatex, etoolbox, tikz, framed, libertine, listings, caption, subcaption, wrapfig, sectsty, pdfcomment}
 
+\usetikzlibrary{arrows,automata}
+
 \newcommand{\HRule}{\rule{\linewidth}{1pt}}
 
 \sectionfont{\LARGE}
@@ -112,7 +114,6 @@
 
 $$ L(M)= \lbrace w \vert w \in \Sigma =  {\lbrace a,b,c \rbrace}^* \text{ e $w$ possui número par de $b$'s e número de $a$'s $+$ $c$'s é ímpar } \rbrace$$
 
-
 \begin{figure}[ht]
 \centering
 \includegraphics[width=0.7\textwidth]{automato-finito}
@@ -133,37 +134,37 @@ A coleção de linguagens regulares sobre um alfabeto $\Sigma$ é definida recur
 \begin{figure}[ht]
 \centering
 \includegraphics[width=0.7\textwidth]{chomsky}
-\caption{Hierarquia de Chomsky, para mostrar onde estão localizadas as linguagens (ou gramáticas) regulares.}
+\caption{Hierarquia de Chomsky, para mostrar onde estão localizadas as linguagens (ou gramáticas) regulares. Fonte: Wikipedia Português}
 \end{figure}
 
 
 \qquad Uma tabela com alguns testes para esse automato finito. Como você pode ver esse automato só aceita número par de b's \textbf{e} número ímpar da soma de a's com c's.
 
-\begin{tabular}{|c|c|c|c|}
+\begin{tabular}{|c|c|}
 \hline
-$\emptyset$ & Rejected \\ 
-\hline 
-bbb & Rejected \\ 
-\hline 
-bb & Rejected \\ 
-\hline 
-bbbb & Rejected \\ 
-\hline 
-bbbbb & Rejected \\ 
-\hline 
-aaaccc & Rejected \\ 
-\hline 
-aacc & Rejected \\ 
-\hline 
-ccaaaa & Rejected \\ 
-\hline 
-bbaacc & Rejected \\ 
-\hline 
-bbaaaaccc & Accepted \\ 
-\hline 
-bbaaaaaccc & Rejected \\ 
-\hline 
-ccaaaa & Accepted \\ 
+$\emptyset$ & Rejected \\
+\hline
+bbb & Rejected \\
+\hline
+bb & Rejected \\
+\hline
+bbbb & Rejected \\
+\hline
+bbbbb & Rejected \\
+\hline
+aaaccc & Rejected \\
+\hline
+aacc & Rejected \\
+\hline
+ccaaaa & Rejected \\
+\hline
+bbaacc & Rejected \\
+\hline
+bbaaaaccc & Accepted \\
+\hline
+bbaaaaaccc & Rejected \\
+\hline
+ccaaaa & Accepted \\
 \hline
 \end{tabular}
 
@@ -171,6 +172,7 @@ ccaaaa & Accepted \\
 \subsection{Automato de Pilha}
 
 $$ L(M)= \lbrace w \vert w \in \Sigma =  {\lbrace a,b,c \rbrace}^* \text{ e } w = {{a}^m}{{b}^n}{{c}^k} \text{ para } m \leqslant n  \leqslant 2m \text{ e } k \geqslant 0 \rbrace $$
+
 
 \begin{figure}[ht]
 \centering
@@ -182,6 +184,14 @@ $$ L(M)= \lbrace w \vert w \in \Sigma =  {\lbrace a,b,c \rbrace}^* \text{ e } w 
 \subsection{Maquina de Turing Fita nica}
 
 $$ L(M)= \lbrace w \# w \vert w \in  {\lbrace 0,1 \rbrace}^* \rbrace $$
+
+\qquad O algoritmo é começar da esquerda para direita procurando 0 ou 1 se 0 então agora eu procuro o separador \# Supostamente eu posso ter "x bits já marcados". Mas o objetivo é marcar igualmente o 0 ou o 1 que eu marquei do lado esquerdo. Uma vez que eu fiz isso, eu volto e faço novamente, até que eu só tenha x...\#x... Se isso acontecer a máquina aceita caso contrário ela rejeita.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.7\textwidth]{turing-ww}
+\caption{Máquina de Turing Fita Única.}
+\end{figure}
 
 \pagebreak
 \subsection{Máquina de Turing Multiplas Fitas}
