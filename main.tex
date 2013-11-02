@@ -115,57 +115,45 @@
 $$ L(M)= \lbrace w \vert w \in \Sigma =  {\lbrace a,b,c \rbrace}^* \text{ e $w$ possui número par de $b$'s e número de $a$'s $+$ $c$'s é ímpar } \rbrace$$
 
 \begin{figure}[ht]
-\centering
-\includegraphics[width=0.7\textwidth]{automato-finito}
-\caption{Automato Finito - Que aceita a linguagem regular definida acima.}
+  \centering
+  \includegraphics[width=0.7\textwidth]{automato-finito}
+  \caption{Automato Finito - Que aceita a linguagem regular definida acima.}
 \end{figure}
 
 \qquad Definição Formal
 A coleção de linguagens regulares sobre um alfabeto $\Sigma$ é definida recursivamente seguindo as regras abaixo:
 
 \begin{itemize}
-\item ($\emptyset$) é uma linguagem regular.
-\item $\lbrace \epsilon \rbrace$ é uma linguagem regular.
-\item Se $ a \in \Sigma$, então linguagem do conjunto unitário a é uma linguagem regular.
-\item Se $A \wedge B$ são linguagens regulares, então $A \cup B$, $A \bullet B$, e ${A}^*$ são linguagens regulares.
-\item Nenhuma outra linguagem sobre $\Sigma$ é regular. $\blacksquare$
+  \item ($\emptyset$) é uma linguagem regular.
+  \item $\lbrace \epsilon \rbrace$ é uma linguagem regular.
+  \item Se $ a \in \Sigma$, então linguagem do conjunto unitário a é uma linguagem regular.
+  \item Se $A \wedge B$ são linguagens regulares, então $A \cup B$, $A \bullet B$, e ${A}^*$ são linguagens regulares.
+  \item Nenhuma outra linguagem sobre $\Sigma$ é regular. $\blacksquare$
 \end{itemize}
 
 \begin{figure}[ht]
-\centering
-\includegraphics[width=0.7\textwidth]{chomsky}
-\caption{Hierarquia de Chomsky, para mostrar onde estão localizadas as linguagens (ou gramáticas) regulares. Fonte: Wikipedia Português}
+  \centering
+  \includegraphics[width=0.7\textwidth]{chomsky}
+  \caption{Hierarquia de Chomsky, para mostrar onde estão localizadas as linguagens (ou gramáticas) regulares.}
 \end{figure}
 
 
 \qquad Uma tabela com alguns testes para esse automato finito. Como você pode ver esse automato só aceita número par de b's \textbf{e} número ímpar da soma de a's com c's.
 
 \begin{tabular}{|c|c|}
-\hline
-$\emptyset$ & Rejected \\
-\hline
-bbb & Rejected \\
-\hline
-bb & Rejected \\
-\hline
-bbbb & Rejected \\
-\hline
-bbbbb & Rejected \\
-\hline
-aaaccc & Rejected \\
-\hline
-aacc & Rejected \\
-\hline
-ccaaaa & Rejected \\
-\hline
-bbaacc & Rejected \\
-\hline
-bbaaaaccc & Accepted \\
-\hline
-bbaaaaaccc & Rejected \\
-\hline
-ccaaaa & Accepted \\
-\hline
+  \hline $\emptyset$ & Rejected \\
+  \hline bbb         & Rejected \\
+  \hline bb          & Rejected \\
+  \hline bbbb        & Rejected \\
+  \hline bbbbb       & Rejected \\
+  \hline aaaccc      & Rejected \\
+  \hline aacc        & Rejected \\
+  \hline ccaaaa      & Rejected \\
+  \hline bbaacc      & Rejected \\
+  \hline bbaaaaccc   & Accepted \\
+  \hline bbaaaaaccc  & Rejected \\
+  \hline ccaaaa      & Accepted \\
+  \hline
 \end{tabular}
 
 \pagebreak
@@ -173,30 +161,51 @@ ccaaaa & Accepted \\
 
 $$ L(M)= \lbrace w \vert w \in \Sigma =  {\lbrace a,b,c \rbrace}^* \text{ e } w = {{a}^m}{{b}^n}{{c}^k} \text{ para } m \leqslant n  \leqslant 2m \text{ e } k \geqslant 0 \rbrace $$
 
-
 \begin{figure}[ht]
-\centering
-\includegraphics[width=0.7\textwidth]{automato-pilha}
-\caption{Automato com Pilha - Que aceita a linguagem livre de contexto definida acima.}
+  \centering
+  \includegraphics[width=0.7\textwidth]{automato-pilha}
+  \caption{Automato com Pilha - Que aceita a linguagem livre de contexto definida acima.}
 \end{figure}
 
 \pagebreak
-\subsection{Maquina de Turing Fita única}
+\subsection{(TM) $M_1$ - Máquina de Turing Uma Fita}
 
 $$ L(M)= \lbrace w \# w \vert w \in  {\lbrace 0,1 \rbrace}^* \rbrace $$
 
 \qquad O algoritmo é começar da esquerda para direita procurando 0 ou 1 se 0 então agora eu procuro o separador \# Supostamente eu posso ter "x bits já marcados". Mas o objetivo é marcar igualmente o 0 ou o 1 que eu marquei do lado esquerdo. Uma vez que eu fiz isso, eu volto e faço novamente, até que eu só tenha x...\#x... Se isso acontecer a máquina aceita caso contrário ela rejeita.
 
+
+\begin{tabular}{|c|c|}
+  \hline $\lambda$              & Reject \\
+  \hline \#                     & Accept \\
+  \hline 0\#0                   & Accept \\
+  \hline 1\#1                   & Accept \\
+  \hline 00\#00                 & Accept \\
+  \hline 11\#11                 & Accept \\
+  \hline 11\#00                 & Reject \\
+  \hline 00\#11                 & Reject \\
+  \hline 10101010\#10101010     & Accept \\
+  \hline 01010101\#01010101     & Accept \\
+  \hline 1100\#1100             & Accept \\
+  \hline 0011\#0011             & Accept \\
+  \hline 0000011111\#0000011111 & Accept \\
+  \hline
+\end{tabular}
+
 \begin{figure}[ht]
 \centering
-\includegraphics[width=0.7\textwidth]{turing-ww}
+\includegraphics[width=0.7\textwidth]{turing-whashtagw}
 \caption{Máquina de Turing Fita Única.}
 \end{figure}
 
 \pagebreak
 \subsection{Máquina de Turing Multiplas Fitas}
 
-$$ L(M)= \lbrace ww \vert w \in  {\lbrace 0,1 \rbrace}^* \rbrace \textbf{ (MT-n) } $$
+$$ L(M)= \lbrace ww \vert w \in  {\lbrace 0,1 \rbrace}^* \rbrace \rightarrow MT \small M_{n} $$
 
+\pagebreak
+\section{Bibliografia}
+
+[1] Introduction to the Theory of Computation (2nd Ed) by Michael Sipser, Thomson Course Technology © 2006, ISBN-13: 978-0-534-95097-2, ISBN-10: 0-534-95097-3
 
 \end{document}
