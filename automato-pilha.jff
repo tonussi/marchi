@@ -3,47 +3,33 @@
 	<automaton>
 		<!--The list of states.-->
 		<state id="0" name="q0">
-			<x>91.0</x>
+			<x>203.0</x>
 			<y>30.0</y>
 			<initial/>
 		</state>
 		<state id="1" name="q1">
-			<x>274.0</x>
-			<y>136.0</y>
+			<x>333.0</x>
+			<y>198.0</y>
 		</state>
 		<state id="2" name="q2">
-			<x>213.0</x>
-			<y>30.0</y>
+			<x>540.0</x>
+			<y>61.0</y>
 		</state>
 		<state id="3" name="q3">
-			<x>30.0</x>
-			<y>136.0</y>
+			<x>63.0</x>
+			<y>195.0</y>
 			<final/>
 		</state>
 		<state id="4" name="q4">
-			<x>213.0</x>
-			<y>242.0</y>
+			<x>308.0</x>
+			<y>368.0</y>
 		</state>
 		<state id="5" name="q5">
-			<x>91.0</x>
-			<y>242.0</y>
+			<x>92.0</x>
+			<y>363.0</y>
 		</state>
 		<!--The list of transitions.-->
 		<transition>
-			<from>1</from>
-			<to>2</to>
-			<read>a</read>
-			<pop/>
-			<push>a</push>
-		</transition>
-		<transition>
-			<from>2</from>
-			<to>1</to>
-			<read>a</read>
-			<pop>a</pop>
-			<push>a</push>
-		</transition>
-		<transition>
 			<from>5</from>
 			<to>3</to>
 			<read>c</read>
@@ -51,45 +37,10 @@
 			<push/>
 		</transition>
 		<transition>
-			<from>1</from>
-			<to>4</to>
-			<read>b</read>
-			<pop>a</pop>
-			<push/>
-		</transition>
-		<transition>
-			<from>5</from>
-			<to>4</to>
-			<read>b</read>
-			<pop>a</pop>
-			<push/>
-		</transition>
-		<transition>
-			<from>4</from>
-			<to>5</to>
-			<read>b</read>
-			<pop>a</pop>
-			<push/>
-		</transition>
-		<transition>
-			<from>1</from>
+			<from>3</from>
 			<to>3</to>
 			<read>c</read>
 			<pop/>
-			<push/>
-		</transition>
-		<transition>
-			<from>4</from>
-			<to>3</to>
-			<read>c</read>
-			<pop/>
-			<push/>
-		</transition>
-		<transition>
-			<from>4</from>
-			<to>5</to>
-			<read/>
-			<pop>a</pop>
 			<push/>
 		</transition>
 		<transition>
@@ -98,6 +49,62 @@
 			<read/>
 			<pop/>
 			<push>Z</push>
+		</transition>
+		<transition>
+			<from>1</from>
+			<to>3</to>
+			<read>c</read>
+			<pop/>
+			<push/>
+		</transition>
+		<transition>
+			<from>4</from>
+			<to>3</to>
+			<read>c</read>
+			<pop/>
+			<push/>
+		</transition>
+		<transition>
+			<from>5</from>
+			<to>4</to>
+			<read/>
+			<pop>A</pop>
+			<push/>
+		</transition>
+		<transition>
+			<from>5</from>
+			<to>4</to>
+			<read>b</read>
+			<pop>A</pop>
+			<push/>
+		</transition>
+		<transition>
+			<from>4</from>
+			<to>5</to>
+			<read>b</read>
+			<pop>A</pop>
+			<push/>
+		</transition>
+		<transition>
+			<from>1</from>
+			<to>4</to>
+			<read>b</read>
+			<pop>A</pop>
+			<push/>
+		</transition>
+		<transition>
+			<from>1</from>
+			<to>2</to>
+			<read>a</read>
+			<pop>a</pop>
+			<push>A</push>
+		</transition>
+		<transition>
+			<from>2</from>
+			<to>1</to>
+			<read/>
+			<pop/>
+			<push>A</push>
 		</transition>
 	</automaton>
 </structure>
