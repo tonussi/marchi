@@ -201,7 +201,59 @@ $$ L(M)= \lbrace w \# w \vert w \in  {\lbrace 0,1 \rbrace}^* \rbrace $$
 \pagebreak
 \subsection{Máquina de Turing Multiplas Fitas}
 
-$$ L(M)= \lbrace ww \vert w \in  {\lbrace 0,1 \rbrace}^* \rbrace \rightarrow MT \small M_{n} $$
+$$ L(M)= \lbrace ww \vert w \in  {\lbrace 0,1 \rbrace}^* \rbrace \rightarrow MT \small (M_{n}) $$
+
+\qquad A tática é procurar por um primeiro a ou um primeiro b eventual. Ao achar este primeiro item marca com um \# (hashtag). Agora percorre até o eventualmente acharmos o final da fita, até acharmos símbolo representando o espaço em branco. No JFlap é o símbolo de um quadrado em branco $\square$. Uma vez que achamos o quadrado em branco, agora voltamos e verificamos se a palavra de trás para frente é a mesma.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\textwidth]{turing-ww}
+\caption{Máquina de Turing (Deterministica).}
+\end{figure}
+
+
+\qquad O algoritmo esclarecido a seguir. (Pseudo-código, Nota: Coloquei alguns comandos por causa do listings do latex, Outra coisa é: Siga a identação do pseudo código.)
+
+\begin{center}
+\begin{tabular}{c}
+\begin{lstlisting}
+while 0 or 1
+  Troca 0 por X or 1 por Y & Mova Direita
+  while 0 or 1 Mova Direita
+  Mova Esquerda
+  Troca 0 por X or 1 por Y & Mova Esquerda
+  while 0 or 1 Mova Esquerda
+  if X or Y Mova Direita
+
+// length(w) % 2 != 0 ? Rejeita : Continua
+
+if Branco Encerra
+if X or Y Mova Esquerda
+while X or Y Troca por a or 1 & Mova Esquerda
+if Branco Mova Direita
+
+while true
+  if 0
+    Troca 0 por X & Mova Direita
+    while 0 or 1 or Branco Mova Direita
+    Troca X por Branco & Mova Esquerda
+    // Refeita Y (Paridade Falha)
+
+    while 0 or 1 or Branco Mova Esquerda
+    if X or Y Mova Direita
+  else if 1
+    Troca 1 por Y & Mova Direita
+    while 0 or 1 or Branco Mova Direita
+    Troca Y por Branco & Mova Esquerda
+    
+    // Rejeita X (Paridade Falha)
+    while 0 or 1 or Branco Mova Esquerda
+    if X or Y Mova Direita
+if Branco Encerra
+\end{lstlisting}
+\end{tabular}
+\end{center}
+
 
 \pagebreak
 \section{Bibliografia}
