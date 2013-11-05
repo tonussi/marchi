@@ -3,37 +3,54 @@
 	<automaton>
 		<!--The list of states.-->
 		<state id="0" name="q0">
-			<x>203.0</x>
-			<y>30.0</y>
+			<x>31.0</x>
+			<y>76.0</y>
 			<initial/>
 		</state>
 		<state id="1" name="q1">
-			<x>333.0</x>
-			<y>198.0</y>
+			<x>173.0</x>
+			<y>76.0</y>
 		</state>
 		<state id="2" name="q2">
-			<x>540.0</x>
-			<y>61.0</y>
+			<x>305.0</x>
+			<y>76.0</y>
 		</state>
 		<state id="3" name="q3">
-			<x>63.0</x>
-			<y>195.0</y>
-			<final/>
+			<x>442.0</x>
+			<y>75.0</y>
 		</state>
 		<state id="4" name="q4">
-			<x>308.0</x>
-			<y>368.0</y>
-		</state>
-		<state id="5" name="q5">
-			<x>92.0</x>
-			<y>363.0</y>
+			<x>586.0</x>
+			<y>75.0</y>
+			<final/>
 		</state>
 		<!--The list of transitions.-->
 		<transition>
-			<from>5</from>
-			<to>3</to>
-			<read>c</read>
+			<from>0</from>
+			<to>1</to>
+			<read>a</read>
 			<pop/>
+			<push>aaZ</push>
+		</transition>
+		<transition>
+			<from>3</from>
+			<to>4</to>
+			<read/>
+			<pop>Z</pop>
+			<push>Z</push>
+		</transition>
+		<transition>
+			<from>2</from>
+			<to>3</to>
+			<read/>
+			<pop>Z</pop>
+			<push/>
+		</transition>
+		<transition>
+			<from>2</from>
+			<to>2</to>
+			<read>b</read>
+			<pop>a</pop>
 			<push/>
 		</transition>
 		<transition>
@@ -44,67 +61,39 @@
 			<push/>
 		</transition>
 		<transition>
-			<from>0</from>
+			<from>1</from>
 			<to>1</to>
-			<read/>
-			<pop/>
-			<push>Z</push>
-		</transition>
-		<transition>
-			<from>1</from>
-			<to>3</to>
-			<read>c</read>
-			<pop/>
-			<push/>
-		</transition>
-		<transition>
-			<from>4</from>
-			<to>3</to>
-			<read>c</read>
-			<pop/>
-			<push/>
-		</transition>
-		<transition>
-			<from>5</from>
-			<to>4</to>
-			<read/>
-			<pop>A</pop>
-			<push/>
-		</transition>
-		<transition>
-			<from>5</from>
-			<to>4</to>
-			<read>b</read>
-			<pop>A</pop>
-			<push/>
-		</transition>
-		<transition>
-			<from>4</from>
-			<to>5</to>
-			<read>b</read>
-			<pop>A</pop>
-			<push/>
-		</transition>
-		<transition>
-			<from>1</from>
-			<to>4</to>
-			<read>b</read>
-			<pop>A</pop>
-			<push/>
+			<read>a</read>
+			<pop>a</pop>
+			<push>aa</push>
 		</transition>
 		<transition>
 			<from>1</from>
 			<to>2</to>
-			<read>a</read>
+			<read>b</read>
 			<pop>a</pop>
-			<push>A</push>
+			<push/>
 		</transition>
 		<transition>
-			<from>2</from>
+			<from>0</from>
 			<to>1</to>
-			<read/>
+			<read>a</read>
 			<pop/>
-			<push>A</push>
+			<push>aZ</push>
 		</transition>
+		<note>
+			<text>Considerando que no mínimo
+temos abc ou seja esse automato
+com pilha nao vai aceitar lambda apenas 
+ou apenas ccccc. Isso gerou bastante discução
+entre os colegas e alguns divergiram dessa ideia
+eu fiz alguns automatos com pilha e esse foi o que
+deu mais certo, mas eu pensei em nao considerar ie: lambda
+apenas ou apenas ie: ccccc ou ie: aaaaa ou ie: bbbbbb, simplesmente
+pelo fato de a⁰b⁰c⁰ ser igual a 111 ou abc ? por causa dessa dúvida eu decidi
+por abc ser a entrada mínima.</text>
+			<x>105.0</x>
+			<y>163.0</y>
+		</note>
 	</automaton>
 </structure>
