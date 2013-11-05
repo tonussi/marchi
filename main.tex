@@ -107,7 +107,7 @@
 
 \section{Máquinas}
 
-\qquad A seguir ser\~{a}o apresentadas as m\'{a}quinas para esse trabalho. Cada sess\~{a}o cont\'{e}m o nome do tipo de m\'{a}quina para que fique melhor organizado. Dentro de cada sess\~{a}o estão resumidamente contidas as informaç\~{o}es e simulaç\~{o}es sobre as m\'{a}quinas. Cada m\'{a}quina aborda uma linguagem de entrada diferente. As simulaç\~{o}es foram feitas usando jFlap \footnote{\href{http://www.cs.duke.edu/csed/jflap/}{jFlap}}.
+\qquad A seguir ser\~{a}o apresentadas as m\'{a}quinas para esse trabalho. Cada sess\~{a}o cont\'{e}m o nome do tipo de m\'{a}quina para que fique melhor organizado. Dentro de cada sess\~{a}o estão resumidamente contidas as informaç\~{o}es e simulaç\~{o}es sobre as m\'{a}quinas. Cada m\'{a}quina aborda uma linguagem de entrada diferente. As simulaç\~{o}es foram feitas usando jFlap \footnote{\href{http://www.cs.duke.edu/csed/jflap/}{jFlap}}. Antemão eu já aviso que eu infelizmente não achei solução para a última questão usando 2 Fitas, ou 3 Fitas. Eu bolei uma tática usando a mesma idéia da máquina anterior w\#w para construir uma ww (ou seja, se não existe \# como separador, coloca um separador e testa bit a bit). \pagebreak
 
 \pagebreak
 \subsection{Automato Finito}
@@ -116,7 +116,7 @@ $$ L(M)= \lbrace w \vert w \in \Sigma =  {\lbrace a,b,c \rbrace}^* \text{ e $w$ 
 
 \begin{figure}[ht]
   \centering
-  \includegraphics[width=0.7\textwidth]{automato-finito}
+  \includegraphics[width=0.7\textwidth]{automato-finito} \flushright $\blacksquare$
   \caption{Automato Finito - Que aceita a linguagem regular definida acima.}
 \end{figure}
 
@@ -161,11 +161,49 @@ A coleção de linguagens regulares sobre um alfabeto $\Sigma$ é definida recur
 
 $$ L(M)= \lbrace w \vert w \in \Sigma =  {\lbrace a,b,c \rbrace}^* \text{ e } w = {{a}^m}{{b}^n}{{c}^k} \text{ para } m \leqslant n  \leqslant 2m \text{ e } k \geqslant 0 \rbrace $$
 
+\qquad O algoritmo basicamente é o seguinte: Para cada a guarda na pilha dois a's caso entre b's pode-se desempilhar no minimo o mesmo numero de a's que entraram na pilha ai entra o nao determinismo, onde vc pode empilhar dois a's ou empilhar apenas um a, quando b entrar desempilha os a's quando Z (fim de pilha no jflap) aparecer, você é livre para colocar quantos c's quiser e então eventualmente encerrar desempilhando Z.
+
 \begin{figure}[ht]
   \centering
-  \includegraphics[width=0.7\textwidth]{automato-pilha}
-  \caption{Automato com Pilha - Que aceita a linguagem livre de contexto definida acima.}
+  \includegraphics[width=0.6\textwidth]{automato-pilha-nao-determinismos}
+  \caption{Automato com Pilha - Os não-determinísmos marcados nesse Automato de Pilha.}
 \end{figure}
+
+\qquad Quando acontece o erro de b's menores que as. Observe que ele para em dois quadros de decisão. No automato de pilha não deterministico isso acontece bastante pois o sistema calcula muitas configurações possíveis.
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=0.6\textwidth]{automato-pilha-bmenoresqueas-erro}
+  \caption{Automato com Pilha - Erro - B's Menores que A's}
+\end{figure}
+
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=\textwidth]{automato-pilha} \flushright $\blacksquare$
+  \caption{Automato com Pilha Não Determinístico - Que aceita a linguagem livre de contexto definida acima.}
+\end{figure}
+
+\begin{tabular}{|c|c|}
+  \hline $\emptyset$           & Rejected \\
+  \hline Z	                    & Reject \\
+  \hline abc	                & Accept \\
+  \hline aabbcc	            & Accept \\
+  \hline aabbbccc	            & Accept \\
+  \hline aaabbbccc	            & Accept \\
+  \hline aaaaaabbbbbbccccccc	 & Accept \\
+  \hline aaaaaaabbbccccccccccc & Reject \\
+  \hline aaaaaaaa	            & Reject \\
+  \hline bbbbbbbb	            & Reject \\
+  \hline ccccccccc	            & Reject \\
+  \hline aaabbbc	            & Accept \\
+  \hline cccc	                & Reject \\
+  \hline aaabbcccc	            & Reject \\
+  \hline abbb	                & Reject \\
+  \hline aaaabbbbbbbbbcccc	     & Reject \\
+  \hline abc	                & Accept \\
+  \hline
+\end{tabular}
 
 \pagebreak
 \subsection{(TM) $M_1$ - Máquina de Turing Uma Fita}
@@ -194,12 +232,12 @@ $$ L(M)= \lbrace w \# w \vert w \in  {\lbrace 0,1 \rbrace}^* \rbrace $$
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=0.7\textwidth]{turing-whashtagw}
+\includegraphics[width=0.7\textwidth]{turing-whashtagw} \flushright $\blacksquare$
 \caption{Máquina de Turing Fita Única.}
 \end{figure}
 
 \pagebreak
-\subsection{Máquina de Turing Multiplas Fitas}
+\subsection{(TM) $M_1$ - Máquina de Turing Uma Fita 2}
 
 $$ L(M)= \lbrace ww \vert w \in  {\lbrace 0,1 \rbrace}^* \rbrace \rightarrow MT \small (M_{n}) $$
 
@@ -207,15 +245,15 @@ $$ L(M)= \lbrace ww \vert w \in  {\lbrace 0,1 \rbrace}^* \rbrace \rightarrow MT 
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=\textwidth]{turing-ww}
+\includegraphics[width=\textwidth]{turing-ww} \flushright $\blacksquare$
 \caption{Máquina de Turing (Deterministica).}
 \end{figure}
 
 
-\qquad O algoritmo esclarecido a seguir. (Pseudo-código, Nota: Coloquei alguns comandos por causa do listings do latex, Outra coisa é: Siga a identação do pseudo código.)
+\subsubsection{A idéia geral.}
+\qquad O algoritmo esclarecido a seguir. (Pseudo-código, Nota: Coloquei alguns comandos por causa do listings do latex, Outra coisa é: Siga a identação do pseudo código.). A idéia é basicamente em um primeiro caso verificar se ww é par, e colocar uma marca forçada separando as palavras pela metade para se poder fazer um "and" bitwise. Se em um primeiro momento for ímpar o número de bits não tem como acontecer ww, então rejeita. Mas... se for par então vai para um segundo caso e aceita ou não dependendo se o "and" passar por todos os bits dando true.
 
-\begin{center}
-\begin{tabular}{c}
+\pagebreak
 \begin{lstlisting}
 while 0 or 1
   Troca 0 por X or 1 por Y & Mova Direita
@@ -245,14 +283,12 @@ while true
     Troca 1 por Y & Mova Direita
     while 0 or 1 or Branco Mova Direita
     Troca Y por Branco & Mova Esquerda
-    
+
     // Rejeita X (Paridade Falha)
     while 0 or 1 or Branco Mova Esquerda
     if X or Y Mova Direita
 if Branco Encerra
 \end{lstlisting}
-\end{tabular}
-\end{center}
 
 
 \pagebreak
