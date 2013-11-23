@@ -1,0 +1,224 @@
+\documentclass[12pt, a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[brazil]{babel}
+
+\usepackage[centertags]{amsmath}
+\usepackage[svgnames]{xcolor}
+\usepackage[section]{placeins}
+
+\usepackage[lmargin=3cm, rmargin=3cm, tmargin=3cm, bmargin=3cm]{geometry}
+
+\usepackage{graphicx, amsmath, amsfonts, amssymb, graphicx, enumerate, verbatim, hyperref, color, lipsum, ifxetex, ifluatex, etoolbox, tikz, framed, libertine, listings, caption, subcaption, wrapfig, sectsty, pdfcomment, parskip}
+
+\usetikzlibrary{arrows,automata}
+
+\newcommand{\HRule}{\rule{\linewidth}{1pt}}
+
+\sectionfont{\LARGE}
+\subsectionfont{\Large}
+\subsubsectionfont{\large}
+
+\input{color}
+
+\hypersetup{colorlinks,citecolor=gray26, filecolor=gray28, linkcolor=gray29, urlcolor=gray30}
+
+\lstset{language=Java, basicstyle=\ttfamily, keywordstyle=\color{javapurple}\bfseries, stringstyle=\color{javared}, commentstyle=\color{javagreen}, morecomment=[s][\color{javadocblue}]{/**}{*/}, numbers=left, numberstyle=\tiny\color{black}, stepnumber=1, numbersep=10pt, tabsize=2, showspaces=false, showstringspaces=false}
+
+
+% conditional for xetex or luatex
+\newif\ifxetexorluatex
+\ifxetex
+  \xetexorluatextrue
+\else
+  \ifluatex
+    \xetexorluatextrue
+  \else
+    \xetexorluatexfalse
+  \fi
+\fi
+%
+\ifxetexorluatex%
+  \usepackage{fontspec}
+  \usepackage{libertine} % or use \setmainfont to choose any font on your system
+  \newfontfamily\quotefont[Ligatures=TeX]{Linux Libertine O} % selects Libertine as the quote font
+\else
+  \usepackage[utf8]{inputenc}
+  \usepackage[T1]{fontenc}
+  \usepackage{libertine} % or any other font package
+  \newcommand*\quotefont{\fontfamily{LinuxLibertineT-LF}} % selects Libertine as the quote font
+\fi
+
+\newcommand*\quotesize{60} % if quote size changes, need a way to make shifts relative
+% Make commands for the quotes
+\newcommand*{\openquote}
+   {\tikz[remember picture,overlay,xshift=-4ex,yshift=-2.5ex]
+   \node (OQ) {\quotefont\fontsize{\quotesize}{\quotesize}\selectfont``};\kern0pt}
+
+\newcommand*{\closequote}[1]
+  {\tikz[remember picture,overlay,xshift=4ex,yshift={#1}]
+   \node (CQ) {\quotefont\fontsize{\quotesize}{\quotesize}\selectfont''};}
+
+% select a colour for the shading
+\colorlet{shadecolor}{Azure}
+
+\newcommand*\shadedauthorformat{\emph} % define format for the author argument
+
+% Now a command to allow left, right and centre alignment of the author
+\newcommand*\authoralign[1] {
+  \if#1l
+    \def\authorfill{}\def\quotefill{\hfill}
+  \else
+    \if#1r
+      \def\authorfill{\hfill}\def\quotefill{}
+    \else
+      \if#1c
+        \gdef\authorfill{\hfill}\def\quotefill{\hfill}
+      \else\typeout{Invalid option}
+      \fi
+    \fi
+  \fi
+}
+
+
+% wrap everything in its own environment which takes one argument (author) and one optional argument
+% specifying the alignment [l, r or c]
+\newenvironment{shadequote}[2][l]%
+{\authoralign{#1}
+\ifblank{#2}
+   {\def\shadequoteauthor{}\def\yshift{-2ex}\def\quotefill{\hfill}}
+   {\def\shadequoteauthor{\par\authorfill\shadedauthorformat{#2}}\def\yshift{2ex}}
+\begin{snugshade}\begin{quote}\openquote}
+{\shadequoteauthor\quotefill\closequote{\yshift}\end{quote}\end{snugshade}}
+
+\begin{document}
+
+\input{title}
+
+\tableofcontents
+\pagebreak
+
+\listoffigures
+\pagebreak
+
+\pagebreak
+\section{O que é o problema?}
+
+\begin{center}
+\begin{huge}\textsc{def}:\end{huge}
+\end{center}
+
+% Enunciar o que é um sistema de correspondência de Post e definir claramente o problema apresentando um exemplo:
+
+\qquad Sistema da correspondência de Post (SCP) aborda problemas do  tipo indecidíveis no sentido de escolha sobre uma decisão ou seja problemas onde não se tem decisão sobre uma escolha (\textit{undecidable decision problem}). Foi introduzido por \href{http://en.wikipedia.org/wiki/Emil_Post}{Emil Post} em 1946. Mais formalmente podemos considerar a sequinte \textbf{definição}:
+
+\qquad Um sistema de correpondência de Post (SCP) é um par $(\pi, P)$, tal que $P$ é uma sequência \textbf{finita} de \textbf{pares} $(x,y)$, onde $(x,y) \in \Sigma^{+}$.
+
+\qquad Esses pares estão contidos em um conjunto sigma fechamento que exclui $\emptyset$ pois a abordagem do problema está para $k \ge 1$ onde $k$ orienta a lista $(i_k)_{1 \le k \le K}$ que por fim lista duas entradas para esse sistema da correspondência, a primeira, $\alpha_{1}, \ldots, \alpha_{N}$ e a segunda entrada $\beta_{1}, \ldots, \beta_{N}$ onde $ 1 \le i_k \le N$. É por isso que é um par. Eu então pego essas duas listas de entrada no sistema e comparo ambas da seguinte forma, na verdade é um mapeamento simples,  $\alpha_{i_1} \ldots \alpha_{i_K} = \beta_{i_1} \ldots \beta_{i_K}.$ para todo $k$.
+
+\qquad O problema da decisão então está em decidir quando um solução existe ou não. Uma solução para um $SCP \langle S \rangle = (\Sigma, P)$ é então concatenar essas strings de $\alpha_{1}, \ldots, \alpha_{N}$ a fim de se obter $\beta_{1}, \ldots, \beta_{N}$. Ajustando os indíces, posicionando da melhor maneira possível para que se obtenha $\alpha_{i_1} \ldots \alpha_{i_K} = \beta_{i_1} \ldots \beta_{i_K}.$.
+
+\qquad Por exemplo, a seguir a solução simples para a correspondência entre as listas abaixo:
+
+\begin{table}[ht]
+\begin{minipage}[b]{0.45\linewidth}\centering
+\begin{tabular}{|c|c|c|}
+\hline 
+$\alpha_1$ & $\alpha_3$ & $\alpha_3$ \\ 
+\hline 
+a & ab & bba \\ 
+\hline 
+\end{tabular}
+\end{minipage}
+\hspace{0.5cm}
+\begin{minipage}[b]{0.45\linewidth}
+\centering
+\begin{tabular}{|c|c|c|}
+\hline 
+$\beta_1$ & $\beta_3$ & $\beta_3$ \\ 
+\hline 
+baa & aa & bb \\ 
+\hline 
+\end{tabular}
+\end{minipage}
+$$\alpha_3 \alpha_2 \alpha_3 \alpha_1 = bba + ab + bba + a = bbaabbbaa = bb + aa + bb + baa = \beta_{3} \beta_{2} \beta_{3} \beta_{1}.$$
+\end{table}
+
+\pagebreak
+\section{Apresentação}
+
+% Apresentar uma redução do problema da parada, ou qualquer outro problema indecidível para o problema da correspondência de Post, ou seja, apresentar uma prova da indecidibilidade do problema da correspondência de Post (Certifique-se de tê-la compreendido).
+
+\qquad Primeiramente vamos tentar fazer alguma base de teoremas para se começar a provar alguma coisa. Vamos pensar no Problema da Parada \textit{Halting Problem} como não sendo algoritmicamente decidível que na verdade é onde eu gostaria de chegar com o problema da correspondência de Emil Post.
+
+\quad Seja o mapeamento nos naturais $H: N^2 \rightarrow N$.
+
+\begin{itemize}
+\item $H \left({m, n}\right) = 1$ se $m$ codifica um programa com memória \textit{infinita} o qual para com dada entrada de tamanho n.
+\item$H \left({m, n}\right) = 0$ caso contrário..
+\end{itemize}
+
+\quad \textbf{Então} $H$ \textbf{não} é recurssivo.\href{http://www.proofwiki.org/wiki/Halting_Problem_is_Not_Algorithmically_Decidable}{$^1$}
+
+\qquad Ou seja dada a imagem abaixo o objetivo é provar que não existe algorítmo para PCPM (\textbf{P}roblema da \textbf{C}orrespondência de \textbf{P}ost \textbf{M}odificado).
+
+\begin{center}
+\begin{figure}[ht]
+\includegraphics[scale=0.63]{pcp}
+\caption{Generalização de uma redução para o Problema da Correspondência de Post no caso tento explicar como mostrar que não existe algorítmo capaz de computar esse problema da parada - Fonte: Vieira J, N. Linguagens e Máquinas: Uma Introdução aos Fundamentos da Computação}
+\end{figure}
+\end{center}
+
+\pagebreak
+
+
+Uma Máquina de Turing com $k$ fitas é uma séctupla: $M = ( K, \Sigma , \Gamma , \delta, q_{0}, q_{accept}, q_{reject})$
+
+\begin{itemize}
+\item $K =$ conjunto finito de estados.
+\item $\Sigma =$ alfabeto de entrada $\cup{\triangleright}$
+\item $\Gamma = $ alfabeto da fita, onde $sqcup  \in \Gamma \text{e} \Sigma \subseteq \Gamma$
+\item $q_{0} = $ estado inicial $(q_{0} \in K)$
+\item $q_{accept} = $ estado de aceitação $(q_{accept} \in K)$
+\item$q_{reject} = $ estado de rejeição $(q_{reject} \in K)$
+\item$\delta : K \times \Gamma^{k} \leftarrow (K \times \Gamma^{k} \times {\lbrace \rightarrow, \leftarrow \rbrace}^{k})$
+\item $\therefore$
+\item $\delta(q_{i}, a_{1}, \ldots , a_{k}) \leftarrow (q_{j}, b_{1}, \ldots, b_{k}, m_{1}, \ldots, m_{k})$
+\end{itemize}
+
+\qquad Onde $k$ é o número de fitas e $m$ é o sentido do movimento do cabeçote.
+
+\qquad Por isso vamos reduzir para uma $PCP^{'}$. Para que $MT \langle M \rangle$ (definida acima $\uparrow$) e uma entrada $w \in \Sigma^{+}$ cujo conjunto de entrada é $Q = \lbrace a, b, c \rbrace $ e $\square == \sqcup ==  \text{branco}$. A partir desses caras será reproduzido um \textbf{S}istema da \textbf{C}orrespondência de \textbf{P}ost $SPC \langle S \rangle = (\pi, P)$, onde:
+
+\begin{itemize}
+\item $\pi = \Gamma \cup \lbrace*, \# \rbrace$ onde $* \text{ e } \#$ são novos marcadores.
+\item O primeiro elemento (par ordenado) de $P$ é $(*, *q_{0}w*)$ onde $q_{0}w$ é a configuração de inicio de $MT \langle M \rangle$ sobre $w$
+\item Os pares restantes de $P$ são:
+  \begin{itemize}
+    \item $(c, c) \text{ para cada } c \in \Gamma$ \\
+             $(*, *)$
+    \item \textbf{Repita-para-cada} $(a, b \in \Gamma \text{ e } e, e' \in E)$:
+      \begin{itemize}
+        \item $(ea, be'),  \text{ se } \delta(e, a)  = [e', b, Q]$
+        \item $(e*, be'*), \text{ se } \delta(e, \square)  = [e', b, Q]$
+        \item $(cea*, e'cb), \text{ se } \delta(e, a)  = [e', b, Q] \text{ para cada } c \in \Gamma$
+        \item $(ce*, e'cb*), \text{ se } \delta(e, \square)  = [e', b, Q] \text{ para cada } c \in \Gamma$
+      \end{itemize}
+    \item $(ea, \#) \text{, se } \delta(e, a) \text{ é indefinido, para cada } e \in Q \text{ e } a \in \Gamma$ \\
+             $(e*, \#*) \text{, se } \delta(e, \square) \text{ é indefinido, para cada } e \in Q \text{ e }$
+    \item $(c\#, \#) \text{ para cada } c \in \Gamma$ \\
+             $(\#c, \#) \text{ para cada } c \in \Gamma$
+    \item $(*\#*, *)$
+  \end{itemize}
+\end{itemize}
+
+\qquad Pode-se mostrar que $MT\langle M \rangle$ para ao computar w \textbf{sse} $SCP \langle S \rangle$ tem solução iniciada com o par ordenado $(*, *q_{0}w*)$ (Esse seria a peça de dominó figuramente falando $\frac{*}{*q_{0}w*} $ do caso base). Os outros dominós são escolhidos de tal modo que, na sua parte superior \textit{strings} correspondem a parte inferior do primeiro dominó, suas \textit{strings} nas últimas folhas da árvore de computação vão criar uma configuração exclusiva que segue a partir da configuração início $q_{0}w$. De modo que, após a parte inferior do primeiro dominó é correspondido. $\blacksquare$
+
+\pagebreak
+\begin{thebibliography}{9}
+\bibitem {newton04} Vieira J, N. Linguagens e Máquinas: Uma Introdução aos Fundamentos da Computação, Departamento de Ciência da Computação - Instituto de Ciências Exatas Universidade Federal de Minas Gerais - Belo Horizonte, 2004.
+
+\bibitem {sipser06} Sipser, M. Introduction to the Theory of Computation (2nd Ed), Thomson Course Technology © 2006, ISBN-13: 978-0-534-95097-2, ISBN-10: 0-534-95097-3.
+\end{thebibliography}
+
+\end{document}
