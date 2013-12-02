@@ -1,0 +1,95 @@
+\documentclass[12pt, a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[brazil]{babel}
+
+\usepackage[section]{placeins}
+
+\usepackage[lmargin=2cm, rmargin=2cm, tmargin=2cm, bmargin=2cm]{geometry}
+
+\usepackage{graphicx, amsmath, amssymb, graphicx, enumerate, , hyperref, color, libertine, listings, sectsty, pdfcomment, parskip}
+
+\newcommand{\HRule}{\rule{\linewidth}{1pt}}
+
+\sectionfont{\LARGE}
+\subsectionfont{\Large}
+\subsubsectionfont{\large}
+
+\newif\ifxetexorluatex
+\ifxetex
+  \xetexorluatextrue
+\else
+  \ifluatex
+    \xetexorluatextrue
+  \else
+    \xetexorluatexfalse
+  \fi
+\fi
+
+\ifxetexorluatex%
+  \usepackage{fontspec}
+  \usepackage{libertine} % or use \setmainfont to choose any font on your system
+  \newfontfamily\quotefont[Ligatures=TeX]{Linux Libertine O} % selects Libertine as the quote font
+\else
+  \usepackage[utf8]{inputenc}
+  \usepackage[T1]{fontenc}
+  \usepackage{libertine} % or any other font package
+  \newcommand*\quotefont{\fontfamily{LinuxLibertineT-LF}} % selects Libertine as the quote font
+\fi
+
+\begin{document}
+
+\input{title}
+
+\tableofcontents
+\pagebreak
+
+\listoffigures
+\pagebreak
+
+Conforme visto em sala, um problema \textbf{NP-Completo} é um problema que
+
+\begin{enumerate}
+  \item está em \textbf{NP}.
+  \item todo problema $\Pi \in \text{\textbf{NP}}$ pode ser reduzido a ele em tempo polinomial.
+\end{enumerate}
+
+Também vimos que o problema da \textbf{Satisfazibilidade Booleana} (SAT) foi o primeiro problema a ser demonstrado \textbf{NP-Completo}. Há na literatura uma série de outros problemas provados \textbf{NP-Completos} \cite{newton04}.
+
+Em geral, a prova desta asserção consiste na redução de um problema reconhecidamente \textbf{NP-Completo} ao que se quer demonstrar.
+
+O trabalho 3 consiste na pesquisa e apresentação da redução de um problema \textbf{NP-Completo}
+a outro. Alguns problemas clássicos são listados abaixo. Outros problemas podem ser encontrados \href{http://en.wikipedia.org/wiki/List_of_NP-complete_problems}{aqui!}.
+
+\begin{itemize}
+  \item Caminho Hamiltoniano.
+  \item Caixeiro Viajante.
+  \item Caminho mais longo.
+  \item Clique.
+  \item Mochila.
+  \item Cobertura Exata.
+  \item Vértices de Cobertura.
+  \item Conjuntos Independentes.
+  \item Roteamento de veículos.
+  \item Isomorfismo em grafos.
+  \item Caminho Rudrata.
+  \item Corte Balanceado.
+  \item Soma de Subconjuntos.
+\end{itemize}
+
+Para tanto pede-se:
+
+\begin{itemize}
+  \item Enuncie os problemas envolvidos na redução.
+  \item Esclareça o sentido da redução (problema fonte, problema destino).
+  \item Apresente a redução.
+\end{itemize}
+
+\pagebreak
+\begin{thebibliography}{9}
+\bibitem {newton04} Vieira J, N. Linguagens e Máquinas: Uma Introdução aos Fundamentos da Computação, Departamento de Ciência da Computação - Instituto de Ciências Exatas Universidade Federal de Minas Gerais - Belo Horizonte, 2004.
+
+\bibitem {sipser06} Sipser, M. Introduction to the Theory of Computation (2nd Ed), Thomson Course Technology © 2006, ISBN-13: 978-0-534-95097-2, ISBN-10: 0-534-95097-3.
+\end{thebibliography}
+
+\end{document}
