@@ -17,6 +17,8 @@
 
 \input{color}
 
+\hypersetup{colorlinks,citecolor=airforceblue, filecolor=ashgrey, linkcolor=amaranth, urlcolor=raspberrypink}
+
 \newif\ifxetexorluatex
 \ifxetex
   \xetexorluatextrue
@@ -27,16 +29,15 @@
     \xetexorluatexfalse
   \fi
 \fi
-
-\ifxetexorluatex%
+\ifxetexorluatex
   \usepackage{fontspec}
-  \usepackage{libertine} % or use \setmainfont to choose any font on your system
-  \newfontfamily\quotefont[Ligatures=TeX]{Linux Libertine O} % selects Libertine as the quote font
+  \usepackage{libertine}
+  \newfontfamily\quotefont[Ligatures=TeX]{Linux Libertine O}
 \else
   \usepackage[utf8]{inputenc}
   \usepackage[T1]{fontenc}
-  \usepackage{libertine} % or any other font package
-  \newcommand*\quotefont{\fontfamily{LinuxLibertineT-LF}} % selects Libertine as the quote font
+  \usepackage{libertine}
+  \newcommand*\quotefont{\fontfamily{LinuxLibertineT-LF}}
 \fi
 
 \begin{document}
@@ -145,12 +146,12 @@ Uma Máquina de Turing com $k$ fitas é uma séctupla: $M = ( K, \Sigma , \Gamma
   \begin{itemize}
     \item $(c, c) \text{ para cada } c \in \Gamma$ \\
              $(*, *)$
-    \item \textbf{Repita-para-cada} $(a, b \in \Gamma \text{ e } e, e' \in E)$:
+    \item \textbf{Repita-para-cada} $(a, b \in \Gamma \text{ e } e, e' \in Q)$:
       \begin{itemize}
-        \item $(ea, be'),  \text{ se } \delta(e, a)  = [e', b, Q]$
-        \item $(e*, be'*), \text{ se } \delta(e, \square)  = [e', b, Q]$
-        \item $(cea*, e'cb), \text{ se } \delta(e, a)  = [e', b, Q] \text{ para cada } c \in \Gamma$
-        \item $(ce*, e'cb*), \text{ se } \delta(e, \square)  = [e', b, Q] \text{ para cada } c \in \Gamma$
+        \item $(ea, be'),  \text{ se } \delta(e, a)  = [e', b, \text{D}]$
+        \item $(e*, be'*), \text{ se } \delta(e, \square)  = [e', b, \text{D}]$
+        \item $(cea*, e'cb), \text{ se } \delta(e, a)  = [e', b, \text{E}] \text{ para cada } c \in \Gamma$
+        \item $(ce*, e'cb*), \text{ se } \delta(e, \square)  = [e', b, \text{E}] \text{ para cada } c \in \Gamma$
       \end{itemize}
     \item $(ea, \#) \text{, se } \delta(e, a) \text{ é indefinido, para cada } e \in Q \text{ e } a \in \Gamma$ \\
              $(e*, \#*) \text{, se } \delta(e, \square) \text{ é indefinido, para cada } e \in Q \text{ e }$
@@ -160,10 +161,14 @@ Uma Máquina de Turing com $k$ fitas é uma séctupla: $M = ( K, \Sigma , \Gamma
   \end{itemize}
 \end{itemize}
 
-\qquad Pode-se mostrar que $MT\langle M \rangle$ para ao computar w \textbf{sse} $SCP \langle S \rangle$ tem solução iniciada com o par ordenado $(*, *q_{0}w*)$ (Esse seria a peça de dominó figuramente falando $\frac{*}{*q_{0}w*} $ do caso base). Os outros dominós são escolhidos de tal modo que, na sua parte superior \textit{strings} correspondem a parte inferior do primeiro dominó, suas \textit{strings} nas últimas folhas da árvore de computação vão criar uma configuração exclusiva que segue a partir da configuração início $q_{0}w$. De modo que, após a parte inferior do primeiro dominó é correspondido. $\blacksquare$
+\qquad \textbf{Nota 01}: E (instrução) significa mova-se para esquerda. e D (instrução) significa mova-se para direita.
+
+\qquad Pode-se mostrar que $MT\langle M \rangle$ para ao computar w \textbf{sse} $SCP \langle S \rangle$ tem solução iniciada com o par ordenado $(*, *q_{0}w*)$ (Esse seria a peça de dominó figuramente falando $\frac{*}{*q_{0}w*} $ do caso base). Os outros dominós são escolhidos de tal modo que, na sua parte superior \textit{strings} correspondem a parte inferior do primeiro dominó, suas \textit{strings} nas últimas folhas da árvore de computação vão criar uma configuração exclusiva que segue a partir da configuração início $q_{0}w$. De modo que, após a parte inferior do primeiro dominó é correspondido. $\blacksquare$ \cite{newton04}
+
+\qquad \textbf{Nota 02}: Essa prova pode ser encontrada no livro do Newton José Vieira \textit{Linguagens e Máquinas: Uma Introdução aos Fundamentos da Computação}. Página 255 - Teorema 47 - \textit{Não existe algoritmo para o PCPM}.
 
 \pagebreak
-\begin{thebibliography}{9}
+\begin{thebibliography}{99}
 \bibitem {newton04} Vieira J, N. Linguagens e Máquinas: Uma Introdução aos Fundamentos da Computação, Departamento de Ciência da Computação - Instituto de Ciências Exatas Universidade Federal de Minas Gerais - Belo Horizonte, 2004.
 
 \bibitem {sipser06} Sipser, M. Introduction to the Theory of Computation (2nd Ed), Thomson Course Technology © 2006, ISBN-13: 978-0-534-95097-2, ISBN-10: 0-534-95097-3.
