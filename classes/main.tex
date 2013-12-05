@@ -264,6 +264,17 @@ $t$ & 1 & 1 & 1 & 1 & $\cdots$ & 1 & 3 & 3 & $\cdots$ & 3 \\
 
 \end{enumerate}
 
+\section{Gran Finale}
+
+Para o gran finale nós devemos ter certeza de que a redução pode ser feita em tempo polinomial. Analizando a tabela nós olhamos para k's digitos e l's digitos vindos da abstração binária de \textit{SUBCONJUNTO-SOMA} pode-se observar que ela contém ${(k + l)}^2$ e cada entrada pode ser calculada para alguma línguagem $F_{bool}$. Então o tempo total é $O(n^2)$. \cite{sipser06}
+
+\begin{quote}
+  \flushright
+    \begin{tabular}{|l}
+\textbf{Nota 04}: Para mostrar que ${(k + l)}^2$ é\\ bigO de $n^2$ (f(n) mais justo possível) basta\\ pegar $ k + l = t $. $t^2 Oc*{n}^2$ para $t=n>0;$\\ $n_0=0; c>0$ a volta segue o mesmo raciocínio.
+  \end{tabular}
+\end{quote}
+
 O caso foi simplesmente particionar o problema em muitas cláusulas lógicas pequenas que torna possível o mapeamento de $\textit{3SAT} \leqslant_{p} \textit{SUBCONJUNTO-SOMA}$. A princípio eu procurei entender como reduzir o problema da soma do subconjuntos para Partições que soluciona o problema em tempo pseudo polinomial com programação dinâmica, com a ideia de se particionar o conjunto em dois conjuntos $S_1$ e $S_2$. E a soma dos elementos de $S_1$ é equivalente a soma dos elementos de $S_2$. Porém eu não consegui entender, pois envolve programação dinâmica (que é tópico de inteligência artificial) e envolve heurística (que também é tópico de inteligência artificial).
 
 Portanto tentei explicar com minhas palavras o que o livro do Sipser (pg 263, 292) trás para deduzir o problema \textit{3SAT} ao problema da soma dos subconjuntos, o qual me parece mais simples. Do ponto de vista que tentar forçar ou simplesmente escrever uma prova de redução de problemas nessas classes NP, NPC, NP-Hard, etc. É muito complicado, para pouca base matemática. Já foi complicado entender a explicação dele sobre a redução \textit{3SAT} para \textit{SUBCONJUNTOS-SOMA}. $\blacksquare$
